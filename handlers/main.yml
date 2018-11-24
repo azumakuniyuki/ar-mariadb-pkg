@@ -8,6 +8,6 @@
 # handlers file for ar-mariadb-pkg
 - name: Restart MariaDB
   service:
-    name:  "mysql"
+    name:  "mariadb"
     state: "restarted"
 
