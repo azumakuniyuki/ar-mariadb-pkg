@@ -1,10 +1,10 @@
-Ansible Role: Apache(pkg)
+Ansible Role: MariaDB(pkg)
 ================================================================================
-Install and configure Apache as an HTTP Server
+Install and configure MariaDB
 
-- Install Apache 2.4.* using yum at CentOS 7
-- Configure files in /etc/httpd
-- Open tcp/80 and tcp/443
+- Install MariaDB 5.* using yum at CentOS 7
+- Configure /etc/my.cnf
+- Close tcp/3306
 
 Requirements
 --------------------------------------------------------------------------------
@@ -15,11 +15,11 @@ Role Variables
 The following variables are defined in defaults/main.yml file.
 
 ```yaml
-apache:
+mariadb:
   enabled: true
   started: true
-  configroot: "/etc/httpd"
-  serverroot: "/usr"
+  serverroot: "/var/lib/mysql"
+  configroot: "/etc"
   workingdir: "/usr/local/src"
 ```
 
@@ -32,7 +32,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-     - { role: azumakuniyuki.ar-apache-pkg }
+     - { role: azumakuniyuki.ar-mariadb-pkg }
 ```
 
 License
