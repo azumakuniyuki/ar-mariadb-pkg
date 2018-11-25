@@ -9,6 +9,7 @@
 mariadb:
   enabled: true
   started: true
+  user: "mysql"
   serverroot: "/var/lib/mysql"
   configroot: "/etc/my.cnf.d"
   workingdir: "/usr/local/src"
