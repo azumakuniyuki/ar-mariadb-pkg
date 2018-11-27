@@ -1,0 +1,15 @@
+/var/log/mariadb/*.log {
+    create 644 {{ mariadb.user.username }} {{ mariadb.user.group }}
+    notifempty
+    daily
+    rotate 60
+    missingok
+    compress
+    dateext
+    sharedscripts
+    postrotate
+        if [ -x "/usr/bin/mysqladmin" && /usr/bin/mysqladmin ping &>/dev/null ]; then
+            /usr/bin/mysqladmin --defaults-extra-file=/root/.my.cnf flush-logs
+        fi
+    endscript
+}
