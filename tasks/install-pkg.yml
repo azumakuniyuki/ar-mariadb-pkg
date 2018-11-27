@@ -29,5 +29,6 @@
       with_items:
         - "mytop"
         - "mysqltuner"
+        - "MySQL-python"
   when: ansible_os_family == "RedHat"
 
