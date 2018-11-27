@@ -11,8 +11,13 @@ symbolic-links=0
 # customize your systemd unit file for mariadb according to the
 # instructions in http://fedoraproject.org/wiki/Systemd
 
+slow_query_log
+slow_query_log_file=/var/log/mariadb/slow-queries.log
+long_query_time = 1
+log_queries_not_using_indexes
+
 [mysqld_safe]
-log-error=/var/log/mariadb/mariadb.log
+log-error=/var/log/mariadb/mariadb-errors.log
 pid-file=/var/run/mariadb/mariadb.pid
 
 # include all files from the config directory
