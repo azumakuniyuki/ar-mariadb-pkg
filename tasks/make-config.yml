@@ -9,18 +9,60 @@
 - name: make-config | Deploy /etc/my.cnf
   notify: Restart MariaDB
   template:
-    src:  "etc/my.cnf.j2"
-    dest: "/etc/my.cnf"
-    mode: "0644"
+    src:    "etc/my.cnf.j2"
+    dest:   "/etc/my.cnf"
+    mode:   "0644"
+    backup: "yes"
 
 - name: make-config | Deploy each config file in /etc/my.cnf.d
   notify: Restart MariaDB
   template:
-    src:  "etc/my.cnf.d/{{ item }}.j2"
-    dest: "{{ mariadb.configroot }}/{{ item }}"
+    src:  "{{ item }}"
+    dest: "{{ mariadb.configroot }}/{{ item | basename | replace('.j2', '') }}"
     mode: "0644"
-  with_items:
-    - "client.cnf"
-    - "mysql-clients.cnf"
-    - "server.cnf"
+  with_fileglob: "templates{{ mariadb.configroot }}/*.cnf.j2"
+
+- name: make-config | Deploy /etc/loglotate.d/mariadb
+  template:
+    src:  "etc/logrotate.d/mariadb.j2"
+    dest: "/etc/logrotate.d/mariadb"
+    mode: "0644"
+
+- block:
+    - name: make-config | MariaDB should be started for the first mysqladmin
+      register: the_first_start
+      service:
+        name:  "mariadb"
+        state: "started"
+
+    - name: make-config | root password for localhost should be set
+      when: the_first_start is changed
+      register: mariadb_root_password
+      mysql_user:
+        name:        "root"
+        host:        "localhost"
+        password:    "{{ mariadb.rootpasswd }}"
+        config_file: "/root/.my.cnf"
+
+    - name: make-config | Deploy /root/.my.cnf
+      when: mariadb_root_password is changed
+      template:
+        src:   "root/.my.cnf.j2"
+        dest:  "/root/.my.cnf"
+        mode:  "0600"
+        owner: "root"
+        group: "root"
+
+    - name: make-config | root password for other hosts should be set
+      when: mariadb_root_password is changed
+      mysql_user:
+        name:           "root"
+        host:           "{{ item }}"
+        password:       "{{ mariadb.rootpasswd }}"
+        config_file:    "/root/.my.cnf"
+        login_user:     "root"
+        login_password: "{{ mariadb.rootpasswd }}"
+      with_items:
+        - "127.0.0.1"
+  when: mariadb.rootpasswd is defined and mariadb.rootpasswd
 
