@@ -9,8 +9,16 @@
 mariadb:
   enabled: true
   started: true
-  user: "mysql"
   serverroot: "/var/lib/mysql"
   configroot: "/etc/my.cnf.d"
   workingdir: "/usr/local/src"
+  rootpasswd: null
+  user: 
+    username: "mysql"
+    uid:      27
+    gid:      27
+    home:     "/var/lib/mysql"
+    group:    "mysql"
+    shell:    "/sbin/nologin"
+    comment:  "'MariaDB Server'"
 
