@@ -1,3 +1,12 @@
+[client]
+user     = root
+host     = localhost
+port     = 3306
+socket   = /var/lib/mysql/mysql.sock
+password = {{ mariadb.rootpasswd }}
+prompt   = MariaDB:[\\U(\\d)] > 
+
 [mysqladmin]
-user= root
-password = {{ mariadb.rootpassword }}
+user     = root
+password = {{ mariadb.rootpasswd }}
+
