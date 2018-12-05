@@ -27,7 +27,7 @@
         name:  "{{ item }}"
         state: "present"
       with_items:
-        - "mytop"
+        - "innotop"
         - "mysqltuner"
         - "MySQL-python"
   when: ansible_os_family == "RedHat"
