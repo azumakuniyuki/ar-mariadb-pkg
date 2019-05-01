@@ -42,7 +42,7 @@
         - "mariadb-test"
 
     - name: install-pkg | Debian | MySQL related packages should be installed
-      yum:
+      apt:
         name:  "{{ item }}"
         state: "present"
       with_items:
