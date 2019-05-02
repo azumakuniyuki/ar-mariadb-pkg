@@ -57,7 +57,7 @@ general_log_file    = {{ mariadb.loggingdir }}/mariadb-general.log
 general_log         = 1
 
 # Error log - should be very few entries.
-log_error = {{ mariadb.loggindir }}/mariadb-errors.log
+log_error = {{ mariadb.loggingdir }}/mariadb-errors.log
 
 # Enable the slow query log to see queries with especially long duration
 slow_query_log_file = {{ mariadb.loggingdir }}/slow-queries.log
