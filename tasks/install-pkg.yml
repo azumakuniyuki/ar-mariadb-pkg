@@ -47,6 +47,6 @@
         state: "present"
       with_items:
         - "mysqltuner"
-        - "python-mysql"
+        - "python-mysqldb"
   when: ansible_os_family == "Debian"
 

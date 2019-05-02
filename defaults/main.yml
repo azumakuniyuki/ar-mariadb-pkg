@@ -10,9 +10,12 @@ mariadb:
   enabled: true
   started: true
   serverroot: "/var/lib/mysql"
-  configroot: "/etc/my.cnf.d"
-  workingdir: "/usr/local/src"
+# configroot: "/etc/my.cnf.d"
+  configroot: "/etc/mysql"
+  loggingdir: "/var/log/mariadb"
+  runtimedir: "/var/run/mysqld"
   rootpasswd: null
+  memorysize: 512
   user: 
     username: "mysql"
     uid:      27

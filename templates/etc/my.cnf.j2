@@ -7,9 +7,9 @@
 #
 # ------------------------------------------------------------------------------
 [client]
-#password   = your_password
-port        = 3306
-socket      = /var/lib/mysql/mysql.sock
+#password = your_password
+port     = 3306
+socket   = {{ mariadb.runtimedir }}/mysqld.sock
 
 # ------------------------------------------------------------------------------
 [mysql]
@@ -29,7 +29,7 @@ no-auto-rehash
 # ------------------------------------------------------------------------------
 [mysqld]
 port    = 3306
-socket  = /var/lib/mysql/mysql.sock
+socket  = {{ mariadb.runtimedir }}/mysqld.sock
 datadir = {{ mariadb.serverroot }}
 user    = {{ mariadb.user.username }}
 
@@ -40,7 +40,7 @@ default-storage-engine = InnoDB
 symbolic-links=0
 
 # The maximum amount of concurrent sessions the MySQL server will allow
-max_connections = 1023
+max_connections = 1024
 
 # How many threads we should keep in a cache for reuse.
 thread_cache_size = 256
@@ -97,7 +97,7 @@ bind-address = 127.0.0.1
 # Log slow queries. Slow queries are queries which take more than the
 slow_query_log      = 1
 long_query_time     = 1
-slow_query_log_file = /var/log/mariadb/slow-queries.log
+slow_query_log_file = {{ mariadb.loggingdir }}/slow-queries.log
 #log_queries_not_using_indexes
 
 # Use this option if you have a MySQL server with InnoDB support enabled but you
@@ -156,7 +156,7 @@ innodb_read_io_threads  = 8
 # If you run into InnoDB tablespace corruption, setting this to a nonzero value
 # will likely help you to dump your tables. Start from value 1 and increase it
 # until you're able to dump the table successfully.
-#innodb_force_recovery=1
+#innodb_force_recovery = 1
 
 # Maximum allowed percentage of dirty pages in the InnoDB buffer pool.
 innodb_max_dirty_pages_pct = 90
@@ -167,8 +167,8 @@ innodb_lock_wait_timeout = 120
 
 # ------------------------------------------------------------------------------
 [mysqld_safe]
-log-error=/var/log/mariadb/mariadb-errors.log
-pid-file=/var/run/mariadb/mariadb.pid
+log-error = {{ mariadb.loggingdir }}/mariadb-errors.log
+pid-file  = {{ mariadb.runtimedir }}/mysqld.pid
 
 # ------------------------------------------------------------------------------
 # include all files from the config directory
