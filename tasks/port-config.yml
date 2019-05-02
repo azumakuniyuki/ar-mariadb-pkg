@@ -7,9 +7,12 @@
 #                                        \_\_|        |___/_/                            
 # port-config
 - name: port-config | 3306 port should not be opened
-  firewalld:
-    service:   "3306/tcp"
-    state:     "disabled"
-    immediate: true
-    permanent: true
+  iptables:
+    comment:     "close 3306"
+    chain:       "INPUT"
+    source:      "0.0.0.0"
+    destination: "{{ ansible_eth0.ipv4.address }}"
+    destination_port: 3306
+    protocol:    "tcp"
+    jump:        "REJECT"
 
