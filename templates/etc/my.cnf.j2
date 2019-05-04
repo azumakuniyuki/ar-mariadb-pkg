@@ -9,7 +9,7 @@
 [client]
 #password = your_password
 port     = 3306
-socket   = {{ mariadb.runtimedir }}/mysqld.sock
+socket   = {{ mariadb.socketpath }}/mysqld.sock
 
 # ------------------------------------------------------------------------------
 [mysql]
@@ -29,7 +29,7 @@ no-auto-rehash
 # ------------------------------------------------------------------------------
 [mysqld]
 port    = 3306
-socket  = {{ mariadb.runtimedir }}/mysqld.sock
+socket  = {{ mariadb.socketpath }}/mysqld.sock
 datadir = {{ mariadb.serverroot }}
 user    = {{ mariadb.user.username }}
 
@@ -168,7 +168,7 @@ innodb_lock_wait_timeout = 120
 # ------------------------------------------------------------------------------
 [mysqld_safe]
 log-error = {{ mariadb.loggingdir }}/mariadb-errors.log
-pid-file  = {{ mariadb.runtimedir }}/mysqld.pid
+pid-file  = {{ mariadb.pidfiledir }}/mysqld.pid
 
 # ------------------------------------------------------------------------------
 # include all files from the config directory

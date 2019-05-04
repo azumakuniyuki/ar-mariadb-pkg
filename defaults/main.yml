@@ -13,7 +13,8 @@ mariadb:
 # configroot: "/etc/my.cnf.d"
   configroot: "/etc/mysql"
   loggingdir: "/var/log/mariadb"
-  runtimedir: "/var/run/mysqld"
+  socketpath: "/var/run/mysqld"
+  pidfiledir: "/var/run/mysqld"
   rootpasswd: null
   memorysize: 512
   user: 
