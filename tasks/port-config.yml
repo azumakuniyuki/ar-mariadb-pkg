@@ -11,7 +11,7 @@
     comment:     "close 3306"
     chain:       "INPUT"
     source:      "0.0.0.0"
-    destination: "{{ ansible_eth0.ipv4.address }}"
+    destination: "{{ ansible_default_ipv4.address }}"
     destination_port: 3306
     protocol:    "tcp"
     jump:        "REJECT"
