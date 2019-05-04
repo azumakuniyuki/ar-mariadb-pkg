@@ -13,8 +13,8 @@
 # * Basic Settings
 #
 user        = {{ mariadb.user.username }}
-pid-file    = {{ mariadb.runtimedir }}/mysqld.pid
-socket      = {{ mariadb.runtimedir }}/mysqld.sock
+pid-file    = {{ mariadb.pidfiledir }}/mysqld.pid
+socket      = {{ mariadb.socketpath }}/mysqld.sock
 port        = 3306
 basedir     = /usr
 datadir     = {{ mariadb.serverroot }}
