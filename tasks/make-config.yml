@@ -46,6 +46,14 @@
         src:  "etc/logrotate.d/mariadb-redhat.j2"
         dest: "/etc/logrotate.d/mariadb"
         mode: "0644"
+
+    - name: make-config | RedHat | Log directory should be exist
+      file:
+        path:   "{{ mariadb.loggingdir }}"
+        state:  "directory"
+        owner:  "{{ mariadb.user.username }}"
+        group:  "{{ mariadb.user.group }}"
+        mode:   "0750"
   when: ansible_os_family == "RedHat"
 
 - block:
@@ -78,6 +86,14 @@
         src:  "etc/logrotate.d/mariadb-debian.j2"
         dest: "/etc/logrotate.d/mariadb"
         mode: "0644"
+
+    - name: make-config | Debian | Log directory should be exist
+      file:
+        path:   "{{ mariadb.loggingdir }}"
+        state:  "directory"
+        owner:  "{{ mariadb.user.username }}"
+        group:  "{{ mariadb.user.group }}"
+        mode:   "2750"
   when: ansible_os_family == "Debian"
 
 - block:
