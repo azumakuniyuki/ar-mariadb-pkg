@@ -9,23 +9,21 @@
 - block:
     - name: install-pkg | RedHat | MariaDB should be installed
       yum:
-        name:  "{{ item }}"
         state: "present"
-      with_items:
-        - "mariadb"
-        - "mariadb-bench"
-        - "mariadb-devel"
-        - "mariadb-libs"
-        - "mariadb-server"
+        name:
+          - "mariadb"
+          - "mariadb-bench"
+          - "mariadb-devel"
+          - "mariadb-libs"
+          - "mariadb-server"
 
     - name: install-pkg | RedHat | MySQL related packages should be installed
       yum:
-        name:  "{{ item }}"
         state: "present"
-      with_items:
-        - "innotop"
-        - "mysqltuner"
-        - "MySQL-python"
+        name:
+          - "innotop"
+          - "mysqltuner"
+          - "MySQL-python"
   when: ansible_os_family == "RedHat"
 
 - block:
