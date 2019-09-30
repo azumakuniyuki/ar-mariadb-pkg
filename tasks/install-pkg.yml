@@ -29,22 +29,20 @@
 - block:
     - name: install-pkg | Debian | MariaDB should be installed
       apt:
-        name:  "{{ item }}"
         state: "present"
-      with_items:
-        - "libmariadb-dev"
-        - "libmariadbclient-dev"
-        - "libmariadb2"
-        - "mariadb-client"
-        - "mariadb-server"
-        - "mariadb-test"
+        name:
+          - "libmariadb-dev"
+          - "libmariadbclient-dev"
+          - "libmariadb2"
+          - "mariadb-client"
+          - "mariadb-server"
+          - "mariadb-test"
 
     - name: install-pkg | Debian | MySQL related packages should be installed
       apt:
-        name:  "{{ item }}"
         state: "present"
-      with_items:
-        - "mysqltuner"
-        - "python-mysqldb"
+        name:
+          - "mysqltuner"
+          - "python-mysqldb"
   when: ansible_os_family == "Debian"
 
