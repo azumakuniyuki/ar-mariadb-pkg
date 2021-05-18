@@ -9,12 +9,12 @@
 - name: boot-script | MariaDB should be started
   when: mariadb.started == true
   service:
-    name:    "mariadb"
-    enabled: "yes"
+    name:  "mariadb"
+    state: "started"
 
 - name: boot-script | MariaDB should be enabled
   when: mariadb.enabled == true
   service:
-    name:  "mariadb"
-    state: "started"
+    name:    "mariadb"
+    enabled: "yes"
 
