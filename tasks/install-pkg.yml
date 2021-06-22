@@ -33,7 +33,7 @@
         name:
           - "libmariadb-dev"
           - "libmariadbclient-dev"
-          - "libmariadb2"
+          - "libmariadb3"
           - "mariadb-client"
           - "mariadb-server"
           - "mariadb-test"
@@ -43,6 +43,6 @@
         state: "present"
         name:
           - "mysqltuner"
-          - "python-mysqldb"
+          - "python3-mysqldb"
   when: ansible_os_family == "Debian"
 
