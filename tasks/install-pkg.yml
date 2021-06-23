@@ -44,5 +44,6 @@
         name:
           - "mysqltuner"
           - "python3-mysqldb"
+          - "python3-pymysql"
   when: ansible_os_family == "Debian"
 
