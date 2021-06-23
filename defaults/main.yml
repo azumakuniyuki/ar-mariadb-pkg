@@ -25,4 +25,12 @@ mariadb:
     group:    "mysql"
     shell:    "/sbin/nologin"
     comment:  "'MariaDB Server'"
+  roles:
+    # mysql> SHOW GRANTS FOR `username`@`hostname`
+#   - name:     "nekodb"
+#     password: "neko-nyaan-db"
+#     priv:     "nekodb.*:ALL,GRANT"
+  databases:
+    # mysql> SHOW CREATE DATABASE `dbname`;
+#   - { name: "nekodb", code: "utf8" }
 

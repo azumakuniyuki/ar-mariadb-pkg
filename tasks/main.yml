@@ -8,6 +8,7 @@
 # tasks file for ar-mariadb-pkg
 - include: install-pkg.yml
 - include: make-config.yml
+- include: prepare-dbs.yml
 - include: build-local.yml
 - include: boot-script.yml
 - include: port-config.yml
