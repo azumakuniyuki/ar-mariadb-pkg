@@ -32,5 +32,5 @@ mariadb:
 #     priv:     "nekodb.*:ALL,GRANT"
   databases:
     # mysql> SHOW CREATE DATABASE `dbname`;
-#   - { name: "nekodb", code: "utf8" }
+    # - { name: "nekodb", code: "utf8mb4", collation: "utf8mb4_unicode_ci" }
 
