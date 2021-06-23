@@ -2,7 +2,7 @@
 user     = root
 host     = localhost
 port     = 3306
-socket   = {{ mariadb.runtimedir }}/mysqld.sock
+socket   = {{ mariadb.socketpath }}/mysqld.sock
 password = {{ mariadb.rootpasswd }}
 prompt   = 'MariaDB:\\U(\\d)> '
 
