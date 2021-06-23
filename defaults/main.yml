@@ -27,7 +27,7 @@ mariadb:
     comment:  "'MariaDB Server'"
   roles:
     # mysql> SHOW GRANTS FOR `username`@`hostname`
-#   - name:     "nekodb"
+#   - name:     "nekochan"
 #     password: "neko-nyaan-db"
 #     priv:     "nekodb.*:ALL,GRANT"
   databases:
