@@ -25,6 +25,12 @@ mariadb:
     group:    "mysql"
     shell:    "/sbin/nologin"
     comment:  "'MariaDB Server'"
+  # Ubuntu 20.04
+  # uid:      111
+  # gid:      116
+  # home:     "/nonexistent"
+  # group:    "mysql"
+  # shell:    "/bin/false"
   roles:
     # mysql> SHOW GRANTS FOR `username`@`hostname`
 #   - name:     "nekochan"
@@ -33,4 +39,5 @@ mariadb:
   databases:
     # mysql> SHOW CREATE DATABASE `dbname`;
     # - { name: "nekodb", code: "utf8mb4", collation: "utf8mb4_unicode_ci" }
+
 
