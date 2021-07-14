@@ -134,3 +134,9 @@
         - "127.0.0.1"
   when: mariadb.rootpasswd is defined and mariadb.rootpasswd
 
+- name: make-config | Backup script should be deployed to /usr/local/sbin
+  template:
+    src:  "usr/local/sbin/backup-mysql-databases.j2"
+    dest: "/usr/local/sbin/backup-mysql-databases"
+    mode: "0755"
+
