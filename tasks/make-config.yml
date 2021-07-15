@@ -134,6 +134,14 @@
         - "127.0.0.1"
   when: mariadb.rootpasswd is defined and mariadb.rootpasswd
 
+- name: make-config | Certificates directory should be created
+  file:
+    path:   "{{ mariadb.serverroot }}/tls"
+    state:  "directory"
+    owner:  "{{ mariadb.user.username }}"
+    group:  "{{ mariadb.user.group }}"
+    mode:   "0755"
+
 - name: make-config | Backup script should be deployed to /usr/local/sbin
   template:
     src:  "usr/local/sbin/backup-mysql-databases.j2"
